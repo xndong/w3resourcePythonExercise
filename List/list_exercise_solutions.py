@@ -46,10 +46,8 @@ def problem_6_solution(alist):
         else:
             for index, element in enumerate(result_list):
                 if list_element[1] < element[1]:
-                    result_list.insert(
-                        index, list_element
-                    )  #修改了列表，所以上面的 in 会被破坏。 remember MIT 6.0001
-                    break  # because we mutate our result_list, thus we violate our interator. Finally, endless loop will occur.
+                    result_list.insert(index, list_element)  #修改了列表，所以上面的 in 会被破坏。 remember MIT 6.0001
+                    break                                    # because we mutate our result_list, thus we violate our interator. Finally, endless loop will occur.
     return result_list
 
 
@@ -141,20 +139,18 @@ def map_test():
     result = "".join(map(str, l))  # 对l中每个element做str操作，返回一个'map object'
     print("First join: ", result, "string length is: ", len(result))
     #map object is iterable
-    result = "".join(str(l))  # 对l做str操作，返回一个str object.
+    result = "".join(str(l))       # 对l做str操作，返回一个str object.
     print("Second join: ", result, "string length is: ", len(result))
 
 
 def generator_test():
     l = [1, 2, 3, 4]
-    x = (
-        str(e) for e in l
-    )  #something called 'tuple comprehension '? No, x actually is a 'generator object' i.e.由generator(生成器)生成的object——一切皆对象.
-    for element in x:  # generator is iterable
+    x = (str(e) for e in l)             # something called 'tuple comprehension '? No, x actually is a 'generator object' i.e.由generator(生成器)生成的object——一切皆对象.
+    for element in x:                   # generator is iterable
         print(element)
     print(
-        ''.join(x))  #迭代器耗尽，所以这里print不出来。just comment the above two lines code
-    print(''.join(str(c) for c in l))  #重新来一次迭代
+        ''.join(x))                     #迭代器耗尽，所以这里print不出来。just comment the above two lines code
+    print(''.join(str(c) for c in l))   #重新来一次迭代
 
     #stringFoo1.join(Foo2)
     #Foo2 can be any iterable object, but element in Foo2 must be string, thus:
@@ -177,12 +173,9 @@ def element_concatenate(list_one, list_two):
 
 def element_concatenate_2(list_one, list_two):
     result_list = []
-    iterable = itertools.product(
-        list_one, list_two
-    )  # Combinatoric iterators产生的interable object的element是用tuple来表示的。
+    iterable = itertools.product(list_one, list_two)            # Combinatoric iterators产生的interable object的element是用tuple来表示的。
     for element in iterable:
-        element = "".join(map(
-            str, element))  #element = "".join(str(e) for e in element)
+        element = "".join(map(str, element))                    #element = "".join(str(e) for e in element)
         result_list.append(element)
     return result_list
 
@@ -262,9 +255,9 @@ def main():
         'come', 'think', 'look', 'want', 'give', 'use', 'find', 'tell', 'ask',
         'work', 'seem', 'feel', 'leave', 'call'
     ]
-    # key可以用在排序sorted(),也可以用在itertools.groupby()
+    # key = function可以用在排序sorted(),也可以用在itertools.groupby()
     for letter, words in itertools.groupby(
-            sorted(word_list), key=operator.itemgetter(0)):
+            sorted(word_list), key = operator.itemgetter(0)):
         print(letter)
         for word in words:
             print(word)
