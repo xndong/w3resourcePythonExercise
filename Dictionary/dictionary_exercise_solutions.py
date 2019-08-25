@@ -253,6 +253,12 @@ def sum_function(default_dic):
         new_dic[k] = sum(default_dic[k])
     return new_dic
 
+def sum_function_2(default_dic):
+    keys = default_dic.keys()
+    values = map(sum,default_dic.values()) #default_dic.values()的每一个value都是一个list
+    return {x:y for x,y in zip(keys,values)}
+
+
 def my_counter():
     l1 = ['yellow','blue','yellow','blue','red']
     l2 = [1,2,3,4,1]
@@ -262,8 +268,8 @@ def my_counter():
     two = {'yellow': 3, 'blue': 4}
     d2 = create_defaultdic_2(one,two)
 
-    new_dic1 = sum_function(d1)
-    new_dic2 = sum_function(d2)
+    new_dic1 = sum_function(d1) #sum_function_2
+    new_dic2 = sum_function(d2) #sum_function_2
 
     print(new_dic1)
     print(new_dic2)
