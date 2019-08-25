@@ -136,7 +136,7 @@ def map_test():
     print("Raw l: ", l)
     print("Raw l2: ", l2)
     print(str(l))
-    result = "".join(map(str, l))  # 对l中每个element做str操作，返回一个'map object'
+    result = "".join(map(str, l))  # 对l中每个element做str操作(str是一个函数名，和sorted()等函数一样，这里同样相当于在做transform)，返回一个'map object'
     print("First join: ", result, "string length is: ", len(result))
     #map object is iterable
     result = "".join(str(l))       # 对l做str操作，返回一个str object.
@@ -186,9 +186,9 @@ def element_concatenate_2(list_one, list_two):
 # Combinatoric iterators --- product, permutations, combinations
 
 
-def sort_metric(iterable):  # count the numbers of char 'A'. 以包含字符'A'的数目为标准来排序.
+def sort_metric(element):  # count the numbers of char 'A'. 以包含字符'A'的数目为标准来排序.
     number = 0
-    for e in iterable:
+    for e in element:
         if e == 'A':
             number += 1
     return number
@@ -198,10 +198,10 @@ def sort_function(alist):
     # alist在排序时，其比较的方式不是alist的元素之间直接比，而是alist的元素进入key函数之后的返回值来进行比较。
     # key函数就是一种映射或者just as transform into Z space
     # parameter 'key = xxx' can be saved, it is not mandatory.
-    alist = sorted(alist, key=sort_metric)
-    print(alist)
-    alist = sorted(alist, key=operator.itemgetter(0))  # 以index = 0 的元素来排序
-    print(alist)
+    result_list = sorted(alist, key=sort_metric)  #sorted()函数返回list类型,其element是alist(can be any iterable object)的element
+    print(result_list)
+    result_list = sorted(alist, key=operator.itemgetter(0))  # 以index = 0 的元素来排序
+    print(result_list)
     '''
     operator.itemgetter(0)返回一个callable object i.e. we can call it(like a funtion). As python official doc says,
     its parameter is an any iterable object. Here, every element in alist will be passed into operator.itemgetter(0)
@@ -255,7 +255,7 @@ def main():
         'come', 'think', 'look', 'want', 'give', 'use', 'find', 'tell', 'ask',
         'work', 'seem', 'feel', 'leave', 'call'
     ]
-    # key = function可以用在排序sorted(),也可以用在itertools.groupby()
+    # key = function可以还可以用在排序sorted(),以及map()
     for letter, words in itertools.groupby(
             sorted(word_list), key = operator.itemgetter(0)):
         print(letter)
