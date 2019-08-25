@@ -8,9 +8,3 @@ Created on Sat Apr  6 14:21:36 2019
 
 str_cal=input("Input your string:")
 print("The lenght of your input string is:",len(str_cal))
-
-
-
-
-    
-
