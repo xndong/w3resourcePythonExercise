@@ -9,6 +9,7 @@ Created on Sun Aug 25 10:56:53 2019
 import os
 import os.path
 import collections
+import time
 import csv
 
 DATA_SAVE_FOLDER = 'shakespearedata'
@@ -52,6 +53,7 @@ def word_count():
     return result
 
 def main():
+    start_t = time.time()
     result = word_count()
     field_names = ['word','count']
     with open('shakespeare_word_frequency_result.csv','w',newline='') as wf:
@@ -59,7 +61,10 @@ def main():
         csv_writer.writeheader()
         for d in result:
             csv_writer.writerow({'word':d,'count':result[d]})
+    end_t = time.time()
+    print(result)
     print(result['love'])
+    print(f'Total run time is: {end_t - start_t}')
     return
 
 if __name__ == '__main__':
