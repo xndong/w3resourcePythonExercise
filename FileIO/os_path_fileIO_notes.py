@@ -66,6 +66,24 @@ os: FileIO
         with open(xxx) as wf:
             for line in rf:
                 wf.write(line)
+  
+    with open('shakespeare_word_frequency_result.csv','w',newline='') as wf:  # newline parameter tells python 在写入到文件时，使用什么 as newline character
+    print(line,end='')
+
+csv: FileIO for csv format file
+    with open(xxx) as rf:              # raw file object rf(iterable object).
+        csv_reader = csv.reader(rf)    # Note that we have two read-related class: reader(rf) DictReader(rf) etc to help you obtain a higer lerve read object.
+        for line in csv_reader:        # _csv.reader object ---> csv_reader(iterable object).
+            print(csv_reader)          
+
+    csv.reader()         csv.writer()
+    csv.DictReader()     csv.DictWriter()   # 使用了DicWriter()则csv_writer的写入内容必须是dictionary-style format: either dictionary or DicReader()读的东西
+                                            # 使用了DicReader()则csv_reader读出来的line就是dictionary-style format
+
+all attrbutes and methods in csv module:
+    import csv
+    dir(csv)
+    
 """
 
 

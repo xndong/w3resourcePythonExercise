@@ -1,0 +1,6 @@
+import sys
+print(sys.argv)
+sys.argv: 
+    the list of command line arguments passed to a Python script.     ---> https://docs.python.org/3/library/sys.html
+    argv[0] is the script name (it is operating system dependent whether this is a full pathname or not)
+    使用空格来隔开program parameter: python xxx.py arg1 arg2 arg3...argn
