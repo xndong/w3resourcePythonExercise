@@ -199,7 +199,7 @@ def top_k_items(input_string,k = 1):     # any interable can be function paramte
     # dictionary.keys()          返回dict_keys(['A', 'B', 'C'])                  dict_keys object, iterable
     # dictionary.values()        返回dict_values([1, 2, 3])                      dict_values object, iteralble
                                  # Not a list, you can test by using list method eg .append() 会报错: AttributeError: 'dict_keys' object has no attribute 'append'
-
+# When accessing a dictionary, you can use either dictionary[key] or dictionary.key
 
 def top_k_items_2(input_string,k = 1):
     counter_object = collections.Counter(input_string) # use constructor to initialize a Counter object
