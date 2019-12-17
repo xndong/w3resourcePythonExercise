@@ -28,4 +28,3 @@ def str_operation_2(astring):
 input_string=input("input your string here:")
 print(str_operation_1(input_string))
 print(str_operation_2(input_string))
-
